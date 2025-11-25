@@ -62,8 +62,8 @@ module.exports = function JobsController(jobModel) {
                     };
                     try {
                         const resp = await axios.post(webhookUrl, payloadToSend, { timeout: 5000 });
-                        console.log('Webhook sent, status:', resp.status);
-                        console.log('Webhook response data:', resp.data);
+                        // console.log('Webhook sent, status:', resp.status);
+                        // console.log('Webhook response data:', resp.data);
                         // log webhook to DB
                         try { await jobModel.logWebhook({ jobId: finished.id, requestBody: payloadToSend, responseStatus: resp.status, responseBody: resp.data }); } catch (e) { console.error('logWebhook failed', e); }
                     } catch (err) {
@@ -71,7 +71,7 @@ module.exports = function JobsController(jobModel) {
                         try { await jobModel.logWebhook({ jobId: finished.id, requestBody: payloadToSend, responseStatus: err.response ? err.response.status : null, responseBody: err.response ? err.response.data : err.message }); } catch (e) { console.error('logWebhook failed', e); }
                     }
                 } else {
-                    console.log('WEBHOOK_URL not set; skipping webhook trigger.');
+                    // console.log('WEBHOOK_URL not set; skipping webhook trigger.');
                 }
 
                 res.json({ message: 'job completed', job: finished });
@@ -82,7 +82,7 @@ module.exports = function JobsController(jobModel) {
         },
 
         webhookTest: async (req, res) => {
-            console.log('Received webhook-test payload:', req.body);
+            // console.log('Received webhook-test payload:', req.body);
             res.json({ received: true, body: req.body });
         }
     };

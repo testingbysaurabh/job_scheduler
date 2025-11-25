@@ -18,7 +18,7 @@ const path = require('path');
             }
         }
 
-        console.log('Migrations completed');
+        // console.log('Migrations completed');
     } catch (err) {
         console.error('Migration error:', err);
         process.exitCode = 1;

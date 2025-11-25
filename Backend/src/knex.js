@@ -23,7 +23,7 @@ async function createKnex() {
     const strictMode = (process.env.DB_STRICT || '').toLowerCase() === 'true';
 
     if (clientEnv === 'sqlite') {
-        console.log('Using sqlite (DB_CLIENT=sqlite)');
+        // console.log('Using sqlite (DB_CLIENT=sqlite)');
         return knexLib(sqliteConfig);
     }
 
@@ -32,7 +32,7 @@ async function createKnex() {
         const knex = knexLib(mysqlConfig);
         try {
             await knex.raw('select 1+1 as result');
-            console.log('Connected to MySQL');
+            // console.log('Connected to MySQL');
             return knex;
         } catch (err) {
             console.warn('MySQL connection failed:', err.message || err);
@@ -47,7 +47,7 @@ async function createKnex() {
     }
 
     // Default: prefer sqlite to avoid noisy MySQL connection attempts during development/demo.
-    console.log('Defaulting to sqlite (set DB_CLIENT=mysql to use MySQL)');
+    // console.log('Defaulting to sqlite (set DB_CLIENT=mysql to use MySQL)');
     return knexLib(sqliteConfig);
 }
 

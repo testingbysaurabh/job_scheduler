@@ -17,8 +17,8 @@ export default function JobList({ jobs, onDetails, onRun }) {
                     <div key={items.id} className="card">
                         <div className="flex justify-between items-start">
                             <div>
-                                {/* <div className="font-semibold">#{items.id} — {items.taskName}</div> */}
-                                <div className="font-semibold">{items.taskName}</div>
+                                <div className="font-semibold ">#&nbsp;{items.id} — {items.taskName}</div>
+                                {/* <div className="font-semibold">{items.taskName}</div> */}
                                 <div className="text-sm muted">
                                     {new Date(items.createdAt).toLocaleString()}
                                 </div>

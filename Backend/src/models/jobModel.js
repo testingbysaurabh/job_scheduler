@@ -11,7 +11,7 @@ async function ensureTables(knex) {
             t.timestamp('updatedAt').defaultTo(knex.raw('CURRENT_TIMESTAMP'));
             t.timestamp('completedAt').nullable();
         });
-        console.log('Created table: jobs');
+        // console.log('Created table: jobs');
     }
 }
 
